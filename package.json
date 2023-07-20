@@ -3,18 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env-cmd -f ./config/.env.development next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.9.3",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "axios": "^1.4.0",
+    "cookies-next": "^2.1.2",
+    "crypto-js": "^4.1.1",
+    "echarts-for-react": "^3.0.2",
+    "env-cmd": "^10.1.0",
+    "moment": "^2.29.4",
     "next": "13.4.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.10.1",
+    "react-loading-skeleton": "^3.3.1",
+    "react-tooltip": "^5.18.1",
+    "styled-components": "^6.0.4",
+    "swr": "^2.2.0",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1"
   }
 }
