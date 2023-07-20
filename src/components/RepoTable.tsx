@@ -19,6 +19,7 @@ type Props = {
 };
 
 const Table = styled.table`
+    min-width: 100px;
     width: 100%;
     //    border-collapse: collapse;
     border-collapse: separate;
@@ -146,10 +147,10 @@ function RepoTable(props: Props) {
 
                         return (
                             <tr key={index} data-test="repo-table-row">
-                                <td>
+                                <td style = {{ maxWidth: "100px" }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                                         {screenWidth > uiBreakpoint && <FaGithub size={25} color={brandColors.black} />}
-                                        <p>{repo.name}</p>
+                                        <p style = {{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{repo.name}</p>
                                     </div>
                                 </td>
 
