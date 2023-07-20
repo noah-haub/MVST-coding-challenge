@@ -1,3 +1,7 @@
+# <div align="center">🚀 GiddyHub 🚀</div>
+
+![GiddyHub-Screenshot](https://github.com/noah-haub/MVST-coding-challenge/assets/73951711/0d2d0f57-2464-43ff-a9df-be31cb62d72a)
+
 ## What is this?
 
 This is GiddyHub. GiddyHub is a straightforward and lightweight utilization of the GitHub API. You can use it to log in with GitHub and check out and search through all your repositories.
