@@ -8,7 +8,6 @@ export const brandColors = {
     darkPurple: "#320e89",
 
     gray: "#F3F3F3",
-    // darkenedGray: "#797979",
 
     cancelColor: "#C5C5C5",
 };

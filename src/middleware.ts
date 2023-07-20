@@ -5,7 +5,6 @@ import { getMiddlewareCookie } from "./utils/cookies";
 const publicRoutes = [urlPaths.signin];
 
 export async function middleware(req: NextRequest, res: NextResponse) {
-    console.log("Middleware");
     const isPublicRoute = publicRoutes.some((route) => req.url.includes(route));
 
     if (!isPublicRoute && !req.url.includes("/api")) {

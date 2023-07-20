@@ -19,7 +19,7 @@ const Headline = styled.h1`
 `;
 
 const Box = styled.div`
-    background-color: ${brandColors.white};
+    background-color: ${brandColors.gray};
     border-radius: 10px;
     padding: 24px;
 `;

@@ -1,7 +1,7 @@
 import { brandColors, urlPaths } from "@/utils/helpers";
 import { useRouter } from "next/router";
 import React from "react";
-import Sidebar from "../SideBar";
+import Sidebar from "../Sidebar";
 import styled from "styled-components";
 
 type Props = {

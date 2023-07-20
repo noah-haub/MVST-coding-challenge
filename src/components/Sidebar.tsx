@@ -23,7 +23,7 @@ const SideBarNav = styled.nav`
     flex-shrink: 0;
 
     background-color: ${brandColors.white};
-    filter: drop-shadow(0px 0px 10px ${brandColors.white});
+    filter: drop-shadow(0px 0px 10px ${brandColors.purple}25);
 
     /* PHONE UI */
     @media only screen and (max-width: 900px) {
