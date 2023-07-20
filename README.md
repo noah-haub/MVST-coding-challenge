@@ -10,7 +10,8 @@ Here is a simple step-by-step guide on downloading and locally running GiddyHub.
 
 1. Clone the repository
 2. Install the packages with `npm install`
-3. Run the app with `npm run dev`
+3. Add the file `.env.development` into the `./config` directory based on the `./config/.env.example` file
+4. Run the app with `npm run dev`
 
 Then you can open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
