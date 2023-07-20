@@ -1,5 +1,4 @@
 import { urlPaths } from "@/utils/helpers";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
