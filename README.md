@@ -6,12 +6,15 @@ It has been created as a small challenge in the application process of [MVST](ht
 
 ## How to run the web app
 
+If you want to test it right away, go to [GiddyHub](https://mvst-coding-challenge.vercel.app/signin) and sign in with a GitHub account.
+
 Here is a simple step-by-step guide on downloading and locally running GiddyHub.
 
-1. Clone the repository
-2. Install the packages with `npm install`
-3. Add the file `.env.development` into the `./config` directory based on the `./config/.env.example` file
-4. Run the app with `npm run dev`
+1. You will need to [create a GitHub OAuth application](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) and save the `client ID` and `client secret` (To run this web app locally you can not make use of the actual GiddyHub OAuth App. The reason is that I am unable to add multiple OAuth callback URLs making it impossible to work in production and locally on people's devices)
+2. Clone the repository
+3. Install the packages with `npm install`
+4. Add the file `.env.development` into the `./config` directory and fill it out based on the `./config/.env.example` file
+5. Run the app with `npm run dev`
 
 Then you can open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
