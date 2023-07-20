@@ -164,10 +164,10 @@ function repos(props: Props) {
                     }}
                 >
                     <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                        <TextField type="text" placeholder="Search..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
+                        <TextField data-test="search-text-field" type="text" placeholder="Search..." value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
 
                         <div>
-                            <SearchButton data-tooltip-id="search-button" type="submit" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <SearchButton data-test="search-button" data-tooltip-id="search-button" type="submit" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                                 <FaMagnifyingGlass color={brandColors.white} />
                             </SearchButton>
                             <Tooltip id="search-button" place="bottom" content="Search" />
