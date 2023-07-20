@@ -13,6 +13,9 @@ function SettingsSkeleton(props: Props) {
         <ContentWrapper>
             <div style={{ margin: "0 auto", maxWidth: "600px" }}>
                 <SkeletonTheme baseColor={brandColors.white} highlightColor={brandColors.captionBlack}>
+                    <div style={{ textAlign: "center", marginBottom: "24px" }}>
+                        <Skeleton height={100} width={100} style={{ borderRadius: "50%" }} />
+                    </div>
                     <div style={{ width: "100%" }}>
                         <Skeleton height={75} style={{ marginBottom: "6px", borderRadius: "5px" }} />
                         <Skeleton height={75} style={{ marginBottom: "12px", borderRadius: "5px" }} />

@@ -98,6 +98,10 @@ function settings(props: Props) {
                         <Headline>Settings</Headline>
                     </div>
 
+                    <div style={{ marginBottom: "24px", textAlign: "center" }}>
+                        <img src={user.avatarUrl} alt="The signed in users profile picture" style={{ width: "100px", height: "100px", borderRadius: "50%" }} />
+                    </div>
+
                     <Box style={{ marginBottom: "24px" }}>
                         <div style={{ marginBottom: "36px" }}>
                             <div style={{ display: "inline-block" }}>

@@ -115,6 +115,7 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
         const userData: User = {
             username: user.data.data.viewer.login,
             displayName: user.data.data.viewer.name,
+            avatarUrl: user.data.data.viewer.avatarUrl,
 
             repositories: repositories,
             repositoryCount: user.data.data.viewer.repositories.totalCount,
