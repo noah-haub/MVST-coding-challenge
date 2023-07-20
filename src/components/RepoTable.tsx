@@ -11,7 +11,7 @@ import Link from "next/link";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
-import ReactECharts from 'echarts-for-react';
+import ReactECharts from "echarts-for-react";
 
 type Props = {
     repos: Repository[];
@@ -32,7 +32,7 @@ const Table = styled.table`
             opacity: 0;
         }
 
-        text-align: right;
+        text-align: center;
 
         color: ${brandColors.captionBlack};
         font-size: 1rem;
@@ -60,7 +60,7 @@ const Table = styled.table`
             font-weight: 600;
         }
 
-        text-align: right;
+        text-align: center;
 
         color: ${brandColors.black};
         font-size: 1rem;
@@ -112,9 +112,63 @@ function RepoTable(props: Props) {
                             <td>{Number(repo.diskUsageInKiloBytes / 1000).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}MB</td>
                             <td>{moment(repo.updatedAt).format("MMM Do YYYY")}</td>
                             <td>
-                                <ReactECharts option={{
-                                    grid
-                                }} />
+                                <div style={{ width: "180px", height: "30px", margin: "0 auto" }}>
+                                    <ReactECharts
+                                        style={{ width: "100%", height: "100%" }}
+                                        option={{
+                                            title: { show: false },
+                                            grid: {
+                                                show: false,
+                                                left: 0,
+                                                top: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                            },
+                                            xAxis: {
+                                                type: "category",
+                                                data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                                                show: false,
+                                            },
+                                            yAxis: {
+                                                type: "value",
+                                                show: false,
+                                            },
+                                            series: [
+                                                {
+                                                    data: [20, 30, 40, 30, 40, 20, 50],
+                                                    type: "line",
+                                                    smooth: true,
+                                                    lineStyle: {
+                                                        color: brandColors.purple,
+                                                        width: 2,
+                                                        type: "solid",
+                                                    },
+                                                    areaStyle: {
+                                                        opacity: 0.7,
+                                                        color: {
+                                                            type: "linear",
+                                                            x: 0,
+                                                            y: 0,
+                                                            x2: 0,
+                                                            y2: 1,
+                                                            colorStops: [
+                                                                {
+                                                                    offset: 0,
+                                                                    color: brandColors.purple, // color at 0%
+                                                                },
+                                                                {
+                                                                    offset: 1,
+                                                                    color: brandColors.lightPurple, // color at 100%
+                                                                },
+                                                            ],
+                                                        },
+                                                    },
+                                                    showSymbol: false,
+                                                },
+                                            ],
+                                        }}
+                                    />
+                                </div>
                             </td>
                             <td>
                                 <Link data-tooltip-id="external-github-link" href={repo.githubUrl} target="_blank">
