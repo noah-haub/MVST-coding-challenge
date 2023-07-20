@@ -11,6 +11,8 @@ interface ApiRequest extends NextApiRequest {
     };
 }
 
+// This API function is the callback url that gets hit during the GitHub auth proccess.
+// Here we get the GitHub Access Token of the user that is currently trying to sign in. We then save that token as a cookie for future usage.
 export default async function callbackHandler(req: ApiRequest, res: NextApiResponse) {
     const { code } = req.query;
 

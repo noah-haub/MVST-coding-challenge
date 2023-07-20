@@ -106,6 +106,7 @@ function QuestionPrompt(props: Props) {
                             {props.cancelButtonText}
                         </CancelButton>
                         <ConfirmButton
+                            data-test="confirm-button"
                             onClick={() => {
                                 props.functionOnConfirm();
                             }}

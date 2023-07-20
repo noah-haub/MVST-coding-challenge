@@ -10,6 +10,7 @@ import styled from "styled-components";
 type Props = {};
 
 const SideBarNav = styled.nav`
+    padding-top: 24px;
     height: 100vh;
     width: 250px;
 

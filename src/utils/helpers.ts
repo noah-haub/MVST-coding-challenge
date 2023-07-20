@@ -1,3 +1,6 @@
+import moment from "moment";
+import { Moment } from "moment";
+
 export const brandColors = {
     white: "#FDFDFC",
     black: "#191a1e",
@@ -33,4 +36,18 @@ export function getErrorMessage(errors: Error[]) {
         }
     }
     return "";
+}
+
+export function getDatesBetweenDates(startDate: Moment, endDate: Moment, timeIncrementInDays: number) {
+    let dates: Moment[] = [];
+
+    const currentDate = moment(startDate.format("YYYY-MM-DD"));
+    const lastDate = moment(endDate.format("YYYY-MM-DD"));
+
+    while (currentDate.isSameOrBefore(lastDate)) {
+        dates.push(currentDate.clone());
+        currentDate.add(timeIncrementInDays, timeIncrementInDays === 1 ? "day" : "days");
+    }
+
+    return dates;
 }
