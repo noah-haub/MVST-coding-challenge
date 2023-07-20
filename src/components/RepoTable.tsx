@@ -145,7 +145,7 @@ function RepoTable(props: Props) {
                         });
 
                         return (
-                            <tr key={index}>
+                            <tr key={index} data-test="repo-table-row">
                                 <td>
                                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                                         {screenWidth > uiBreakpoint && <FaGithub size={25} color={brandColors.black} />}

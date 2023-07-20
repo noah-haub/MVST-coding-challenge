@@ -22,9 +22,10 @@ The test suite was built using [Cypress](https://www.cypress.io/) and this is ho
 3. Replace the `GITHUB_AUTH_EMAIL` and `GITHUB_AUTH_PASSWORD` env variables with the auth credentials you would like to use for testing.
 4. Also make sure to replace the `baseUrl` with the URL your dev server is running on (Can be kept as http://localhost:3000 in most cases).
 5. Now run the test suite with `npm run cypress`
-6. Click on `Test in browser`
-7. Select `Specs`in the sidebar of the newly opened Cypress browser window
-8. Select the `spec.cy.ts`spec and let it run (For the authentication tests to succeed you will have to previously manually authorized GiddyHub access to your GitHub account)
+6. Click on `E2E Testing`
+7. Select `Chrome` and click on `Start E2E Testing in Chrome`
+8. Select `Specs`in the sidebar of the newly opened Cypress browser window
+9. Select the `spec.cy.ts`spec and let it run (For the authentication tests to succeed you will have to previously manually authorized GiddyHub access to your GitHub account)
 
 
 ## Future improvements
