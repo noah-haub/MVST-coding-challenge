@@ -103,20 +103,21 @@ function settings(props: Props) {
                             <div style={{ display: "inline-block" }}>
                                 <LabelH4>Username</LabelH4>
                                 {/* <Myh4White>{newName}</Myh4White> */}
-                                <ValueH4>{user.username}</ValueH4>
+                                <ValueH4 data-test="username-text">{user.username}</ValueH4>
                             </div>
                         </div>
                         <div>
                             <div style={{ display: "inline-block" }}>
                                 <LabelH4>Displayname</LabelH4>
                                 {/* <Myh4White>{newName}</Myh4White> */}
-                                <ValueH4>{user.displayName}</ValueH4>
+                                <ValueH4 data-test="displayname-text">{user.displayName}</ValueH4>
                             </div>
                         </div>
                     </Box>
 
                     <div style={{ textAlign: "center" }}>
                         <LogoutButton
+                            data-test="signout-button"
                             onClick={() => {
                                 setShowSignoutPrompt(true);
                             }}

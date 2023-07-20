@@ -87,6 +87,7 @@ function signin(props: Props) {
                     </Headline>
 
                     <GitHubAuthButton
+                        data-test="github-auth-button"
                         onClick={() => {
                             toast.loading("");
                             // Signin with github...

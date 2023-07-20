@@ -6,6 +6,7 @@
     "dev": "env-cmd -f ./config/.env.development next dev",
     "build": "next build",
     "start": "next start",
+    "cypress": "cypress open",
     "lint": "next lint"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/crypto-js": "^4.1.1"
+    "@types/crypto-js": "^4.1.1",
+    "cypress": "^12.17.1"
   }
 }
