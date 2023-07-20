@@ -3,6 +3,7 @@ import { Moment } from "moment";
 export type User = {
     username: string;
     displayName: string;
+    avatarUrl: string;
 
     repositories: Repository[];
     repositoryCount: number;

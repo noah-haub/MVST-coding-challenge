@@ -8,7 +8,9 @@ export default defineConfig({
         baseUrl: "http://localhost:3000",
     },
     env: {
-        GITHUB_AUTH_EMAIL: "noah.haubenreiser@gmail.com",
-        GITHUB_AUTH_PASSWORD: "Hugo20Luna",
+        GITHUB_AUTH_EMAIL: "test@gmail.com",
+        GITHUB_AUTH_PASSWORD: "password1234",
+
+        SEARCH_TERM: "helloworld",
     },
 });
