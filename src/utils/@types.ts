@@ -5,6 +5,7 @@ export type User = {
     displayName: string;
 
     repositories: Repository[];
+    repositoryCount: number;
 };
 
 export type Repository = {
@@ -14,12 +15,19 @@ export type Repository = {
 
     name: string;
     languages: string[];
-    diskUsageInKiloBytes: number,
+    diskUsageInKiloBytes: number;
     githubUrl: string;
 
     deyployments: Deployment[];
+    deploymentCount: number;
+    pullRequests: PullRequest[];
+    pullRequestCount: number;
 };
 
 export type Deployment = {
+    createdAt: Moment;
+};
+
+export type PullRequest = {
     createdAt: Moment;
 };

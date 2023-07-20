@@ -140,6 +140,7 @@ function settings(props: Props) {
                             await axiosApi.post("/integrations/github/auth/signout");
                             toast.dismiss();
                             toast.success("Signed out successfully");
+                            window.location.reload();
                         } catch (error) {
                             toast.dismiss();
                             toast.error(`${error}`);

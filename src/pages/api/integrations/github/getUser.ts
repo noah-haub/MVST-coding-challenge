@@ -12,10 +12,17 @@ type Data = {
     } | null;
 };
 
+// This API function gets the currently signed in users github profile including their basic info (name, image url) and their repositories.
 export default async function getUserHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
     try {
+        //
+        // Step 1 - Get Access Token
+        //
         const githubAccessToken = getApiCookie(req, res, cookieNames.githubAccessToken);
 
+        //
+        // Step 2 - Get User Info Based On Access Token
+        //
         const user = await axios.post(
             "https://api.github.com/graphql",
             {
@@ -26,11 +33,12 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
                             name,
                             avatarUrl,
                             
-                            repositories(first: 100, orderBy: { field: UPDATED_AT, direction: DESC }) {
+                            repositories(first: 100, orderBy: { field: PUSHED_AT, direction: DESC }) {
                                 nodes {
                                     id,
                                     createdAt,
                                     updatedAt,
+                                    pushedAt,
                                     name,
                                     description,
                             
@@ -42,14 +50,23 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
                                     },
                                     diskUsage,
 
-                                    deployments(first: 25) {
+                                    deployments(first: 50, orderBy: { field: CREATED_AT, direction: DESC }) {
                                         nodes {
                                             createdAt
-                                        }
+                                        },
+                                        totalCount
+                                    },
+
+                                    pullRequests(first: 50, orderBy: { field: CREATED_AT, direction: DESC }) {
+                                        nodes {
+                                            createdAt
+                                        },
+                                        totalCount
                                     },
                     
                                     url
                                 },
+                                totalCount
                             }
                         }
                     }
@@ -60,6 +77,9 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
             }
         );
 
+        //
+        // Step 3 - Format API response so it is easy to work with
+        //
         const repositories: Repository[] = [];
         user.data.data.viewer.repositories.nodes.forEach((item: any, index: number) => {
             const languages: string[] = [];
@@ -72,15 +92,23 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
                 deployments.push({ createdAt: moment(deploymentItem.createdAt) });
             });
 
+            const pullRequests: Deployment[] = [];
+            item.pullRequests.nodes.forEach((pullRequestItem: { createdAt: string }) => {
+                pullRequests.push({ createdAt: moment(pullRequestItem.createdAt) });
+            });
+
             repositories.push({
                 id: item.id,
                 createdAt: moment(item.createdAt),
-                updatedAt: moment(item.updatedAt),
+                updatedAt: moment(item.pushedAt),
                 name: item.name,
                 languages: languages,
                 diskUsageInKiloBytes: Number(item.diskUsage ?? 0),
                 githubUrl: item.url,
                 deyployments: deployments,
+                deploymentCount: Number(item.deployments.totalCount ?? 0),
+                pullRequests: pullRequests,
+                pullRequestCount: Number(item.pullRequests.totalCount ?? 0),
             });
         });
 
@@ -89,9 +117,8 @@ export default async function getUserHandler(req: NextApiRequest, res: NextApiRe
             displayName: user.data.data.viewer.name,
 
             repositories: repositories,
+            repositoryCount: user.data.data.viewer.repositories.totalCount,
         };
-
-        // console.log(userData);
 
         if (!user || !userData) {
             console.log("Something went wrong getting user: " + "No user found.");

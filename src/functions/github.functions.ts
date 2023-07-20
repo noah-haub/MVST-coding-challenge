@@ -1,4 +1,4 @@
-import { User } from "@/utils/@types";
+import { Repository, User } from "@/utils/@types";
 import { axiosApi } from "@/utils/axios";
 import useSWR from "swr";
 
@@ -32,4 +32,38 @@ export function useUser() {
         isLoadingUser: isLoading,
         errorUser: error,
     };
+}
+
+export async function searchRepos(githubUserName: string, searchQuery: string): Promise<{ repos: Repository[] | null; error: string | null }> {
+    try {
+        const data = {
+            githubUserName: githubUserName,
+            searchQuery: searchQuery,
+        };
+        const response = await axiosApi.post("/integrations/github/searchRepos", data);
+
+        if (response.data.error) {
+            return {
+                repos: null,
+                error: `${response.data.error}`,
+            };
+        } else if (response.data.data.repos) {
+            const resultRepos = response.data.data.repos as Repository[];
+
+            return {
+                repos: resultRepos,
+                error: null,
+            };
+        } else {
+            return {
+                repos: null,
+                error: `Something went wrong searching through the repos`,
+            };
+        }
+    } catch (error) {
+        return {
+            repos: null,
+            error: `${error}`,
+        };
+    }
 }
